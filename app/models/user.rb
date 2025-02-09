@@ -5,7 +5,15 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :posts
-  has_many :followers
+
+  # Users that this user is following
+  has_many :active_relationships, class_name: "Follower", foreign_key: "follower_id", dependent: :destroy
+  has_many :following, through: :active_relationships, source: :following
+
+  # Users that are following this user
+  has_many :passive_relationships, class_name: "Follower", foreign_key: "following_id", dependent: :destroy
+  has_many :followers, through: :passive_relationships, source: :follower
+
   has_many :reactions
   has_many :comments, dependent: :destroy
 end
