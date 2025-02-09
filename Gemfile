@@ -59,3 +59,5 @@ end
 gem "hirb", "~> 0.7.3"
 
 gem "dotenv-rails", "~> 3.1"
+
+gem "devise", "~> 4.9"
