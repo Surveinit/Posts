@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
   devise_for(:users)
-  resources(:posts, only: [ :index, :show, :create ])
+  resources(:posts, only: [ :index, :show, :create ]) do
+    resources(:comments, only: [ :create ])
+  end
+
   resources(:users, only: [ :index, :show ]) do
     member do
       post(:follow, to: "follows#create")

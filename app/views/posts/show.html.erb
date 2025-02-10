@@ -1,17 +1,21 @@
-<h1>Posts#show</h1>
+<h1>Post#show</h1>
+<h1><%= @post.content %></h1>
 
-<%= @post.content %>
+<%= form_with model: [@post, Comment.new], local: true do |form| %>
+  <div>
+    <%= form.text_field :content, placeholder: "Write your comment here..." %>
+  </div>
+  <div>
+    <%= form.submit "Create Comment" %>
+  </div>
+<% end %>
 
 <ul>
-  <% if @comments.any? %>
-    <% @comments.each do |comment| %>
+  <% if @post.comments.any? %>  
+    <% @post.comments.each do |comment| %>
       <%= comment.content %> <br>
-      <% if comment.replies.any? %>
-        <% comment.replies.each do |reply| %>
-          <%= reply.content %> <br>
-        <% end %>
-      <% end %>
-      <% end %>
+      <small>by <%= comment.user.email%></small> <br>
+    <% end %>
     <% else %>
       <p>No Comments</p>
     <% end %>

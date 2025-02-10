@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_02_09_160515) do
+ActiveRecord::Schema[7.2].define(version: 2025_02_10_183214) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -22,8 +22,10 @@ ActiveRecord::Schema[7.2].define(version: 2025_02_09_160515) do
     t.bigint "parent_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "post_id", null: false
     t.index ["commentable_type", "commentable_id"], name: "index_comments_on_commentable"
     t.index ["parent_id"], name: "index_comments_on_parent_id"
+    t.index ["post_id"], name: "index_comments_on_post_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
@@ -67,6 +69,7 @@ ActiveRecord::Schema[7.2].define(version: 2025_02_09_160515) do
   end
 
   add_foreign_key "comments", "comments", column: "parent_id"
+  add_foreign_key "comments", "posts"
   add_foreign_key "comments", "users"
   add_foreign_key "followers", "users", column: "follower_id"
   add_foreign_key "followers", "users", column: "following_id"
