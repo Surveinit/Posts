@@ -1,2 +1,11 @@
 <h1>Posts#index</h1>
-<p>Find me in app/views/posts/index.html.erb</p>
+
+<ul>
+  <% if @posts.any? %>
+    <% @posts.each do |post| %>
+      <%= post.content %> <br>
+    <% end %>
+  <% else %>
+    <p>No Posts</p>
+  <% end %>
+</ul>

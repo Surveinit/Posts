@@ -1,2 +1,18 @@
 <h1>Posts#show</h1>
-<p>Find me in app/views/posts/show.html.erb</p>
+
+<%= @post.content %>
+
+<ul>
+  <% if @comments.any? %>
+    <% @comments.each do |comment| %>
+      <%= comment.content %> <br>
+      <% if comment.replies.any? %>
+        <% comment.replies.each do |reply| %>
+          <%= reply.content %> <br>
+        <% end %>
+      <% end %>
+      <% end %>
+    <% else %>
+      <p>No Comments</p>
+    <% end %>
+</ul>
