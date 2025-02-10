@@ -6,7 +6,7 @@
 <ul>
   <% if @user.posts.any? %>
     <% @user.posts.each do |post| %>
-      <%= post.content %> <br>
+      <%= link_to post.content, post_path(post) %> <br>
     <% end %>
   <% else %>
     <p>No Posts</p>
