@@ -3,7 +3,7 @@
 <p>Hi <%= @user.email %> </p>
 <p>Followers:<%= @user.followers.count %></p>      
 <p>Following:<%= @user.following.count %></p>      
-<p>Since: <%= @user.created_at%></p> <br>
+<p>Since: <%= @user.created_at.strftime("%B %d, %Y") %></p> <br>
 
 <% unless current_user == @user %>  <%# This is the key change %>
   <% if current_user.following?(@user) %>
