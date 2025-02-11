@@ -1,5 +1,15 @@
-<h1>Post#show</h1>
 <h1><%= @post.content %></h1>
+
+<p>Reactions: <%= @post.reactions.count %></p>
+
+<% if current_user %>
+  <% if current_user.reacted_to?(@post) %>
+    <% reaction = current_user.reactions.find_by(post_id: @post.id) %>  
+    <%= button_to "Unlike", post_reaction_path(@post, reaction), method: :delete if reaction %> 
+  <% else %>
+    <%= button_to "Like", post_reactions_path(@post), method: :post %>
+  <% end %>
+<% end %>
 
 <%= form_with model: [@post, Comment.new], local: true do |form| %>
   <div>
@@ -11,12 +21,12 @@
 <% end %>
 
 <ul>
-  <% if @post.comments.any? %>  
+  <% if @post.comments.any? %>
     <% @post.comments.each do |comment| %>
       <%= comment.content %> <br>
-      <small>by <%= comment.user.email%></small> <br>
+      <small>by <%= comment.user.email %></small> <br>
     <% end %>
-    <% else %>
-      <p>No Comments</p>
-    <% end %>
+  <% else %>
+    <p>No Comments</p>
+  <% end %>
 </ul>

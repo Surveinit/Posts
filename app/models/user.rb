@@ -33,4 +33,10 @@ class User < ApplicationRecord
   def following?(user)
     following.include?(user)
   end
+
+  def reacted_to?(post)
+    reactions.exists?(post_id: post.id)
+  end
+
 end
+
