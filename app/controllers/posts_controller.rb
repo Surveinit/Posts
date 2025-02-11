@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
   def index
-    @posts = Post.all
+    # @posts = Post.where(created_at: 7.days.ago..Time.now).order(created_at: :desc)
+    @posts = Post.joins(:user).where(user: [current_user, *current_user.following]).order(created_at: :desc)
   end
 
   def show

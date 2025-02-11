@@ -18,7 +18,7 @@
   <% if @posts.any? %>
     <% @posts.each do |post| %>
       <li>
-        <%= link_to post.content, post_path(post) %>
+        <%= link_to post.content, post_path(post) %> by: <%= post.user.email || "Unknow User"%>
       </li>
     <% end %>
   <% else %>
