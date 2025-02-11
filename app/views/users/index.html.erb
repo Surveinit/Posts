@@ -3,8 +3,19 @@
 <ul>
   <% if @users.any? %>
     <% @users.each do |user| %>
-      <%= link_to user.email, user_path(user) %> <br>
-      <p>Since: <%= user.created_at%></p> <br>
+      <li>
+        <%= link_to user.email, user_path(user) %> <br>
+
+        <% unless current_user == user %>
+          <% if current_user.following?(user) %>
+            <%= button_to "Unfollow", unfollow_user_path(user), method: :delete, params: { user_id: user.id } %>
+          <% else %>
+            <%= button_to "Follow", follow_user_path(user), method: :post, params: { user_id: user.id } %>
+          <% end %>
+        <% end %>
+
+        <p>Since: <%= user.created_at.strftime("%B %d, %Y") %></p> <br>
+      </li>
     <% end %>
   <% else %>
     <p>No Users</p>

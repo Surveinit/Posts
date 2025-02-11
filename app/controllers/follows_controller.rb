@@ -3,12 +3,12 @@ class FollowsController < ApplicationController
 
   def create
     current_user.follow(@user)
-    redirect_to(@user, notice: "You have followed #{@user.email}")
+    redirect_back fallback_location: root_path, notice: "You have followed #{@user.email}"
   end
 
   def destroy
     current_user.unfollow(@user)
-    redirect_to(@user, notice: "You have unfollowed #{@user.email}")
+    redirect_back fallback_location: root_path, notice: "You have unfollowed #{@user.email}"
   end
 
   private
