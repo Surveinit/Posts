@@ -17,9 +17,9 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
+  <body class="<%= controller_name == 'sessions' && action_name == 'new' ? 'login-page' : (controller_name == 'registrations' && action_name == 'new' ? 'signup-page' : '') %>">  <%# ONLY ONE BODY TAG %>
     <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p
+    <p class="alert"><%= alert %></p>
     <%= yield %>
   </body>
 </html>
