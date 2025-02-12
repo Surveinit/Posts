@@ -1,27 +1,39 @@
-<h1>Posts#index</h1>
+<div class="navigation-container">
+
+  <div class="logo">
+    <%= image_tag "post_box_favicon.png", alt: "Postbox favicon", class: "postbox-favicon" %>
+    <h1>Posts#index</h1>
+  </div>
+
+  <%= link_to user_path(current_user) do %>
+    <%= image_tag "user_face.png", alt: "User Avatar", class: "user-avatar" %>
+  <% end %>
+
+</div>
 
 <!-- Form to create a new post -->
-<%= form_with model: Post.new, local: true do |form| %>
-  <div>
-    <%= form.label :content, "New Post:" %><br>
-    <%= form.text_field :content, placeholder: "Write your post here..." %>
-  </div>
-  <div>
-    <%= form.submit "Create Post" %>
-  </div>
-<% end %>
-
-<hr>
+<div class="form-container">
+  <%= form_with model: Post.new, local: true, html: { class: "post-form" } do |form| %>
+    <%= form.text_field :content, placeholder: "Write something...", class: "post-textbox" %>
+    <%= form.submit "Create Post", class: "post-button" %>
+  <% end %>
+</div>
 
 <!-- List of posts -->
-<ul>
+<div class="post-container">
+
   <% if @posts.any? %>
     <% @posts.each do |post| %>
-      <li>
-        <%= link_to post.content, post_path(post) %> by: <%= post.user.email || "Unknow User"%>
-      </li>
+
+      <%= link_to post_path(post), class: "post-link" do %>
+        <div class="post">
+          <%= post.content %> by: <%= post.user.email || "Unknown User" %>
+        </div>
+      <% end %>
+
     <% end %>
   <% else %>
     <p>No Posts</p>
   <% end %>
-</ul>
+
+</div>

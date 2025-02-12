@@ -1,66 +1,76 @@
+:root {
+  --background-color: #fffcf2;
+  --white: #fffcf2;
+  --light-yellow: #fff7de;
+  --dark-yellow: #d9cda7;
+}
+
 /* -- START -- Login & Sign up Page styling */
 
-body.login-page, body.signup-page {
-  background: #FFFCF2;
-  display: flex; 
-  justify-content: center; 
-  align-items: center; 
-  min-height: 100vh; 
-  margin: 0; 
+body.login-page,
+body.signup-page {
+  background: var(--background-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
   overflow: hidden;
 }
 
 .login-container {
-  display: flex; 
-  align-items: flex-start; 
-  width: 90%; 
-  max-width: 1400px; 
-  margin: 20px auto; 
-  display: flex; 
-  flex-direction: column; 
-  align-items: center; 
+  display: flex;
+  align-items: flex-start;
+  width: 90%;
+  max-width: 1400px;
+  margin: 20px auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .login-image {
-  width: 80%; 
-  height: auto; 
+  width: 80%;
+  height: auto;
   margin-top: -8%;
   z-index: 1;
 }
 
 .welcome-form {
-  width: 30%; 
-  min-width: 30%; 
+  width: 30%;
+  min-width: 30%;
   padding: 30px;
-  border-radius: 8px; 
+  border-radius: 8px;
   z-index: 2;
 }
 
 .login-heading {
-  font-size: 2.25rem; 
+  font-size: 2.25rem;
   margin-bottom: 20px;
-  text-align: center; 
+  text-align: center;
 }
 
-.email-label, .password-label {
-  font-size: 1.50rem;
+.email-label,
+.password-label {
+  font-size: 1.5rem;
   margin-bottom: 5px;
 }
 
-.email-textbox, .password-textbox {
-  background-color: #FFF7DE;
+.email-textbox,
+.password-textbox {
+  background-color: #fff7de;
   font-size: 1.25rem;
-  width: 100%; 
+  width: 100%;
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 4px;
-  box-sizing: border-box; 
+  box-sizing: border-box;
   margin-bottom: 15px;
 }
 
 .remember-me-field {
-  display: flex; 
-  align-items: center; 
+  display: flex;
+  align-items: center;
   margin-bottom: 20px;
 }
 
@@ -73,34 +83,139 @@ body.login-page, body.signup-page {
 }
 
 .submit-button {
-  background-color: #FFEEB3;
-  width: 100%; 
+  background-color: #ffeeb3;
+  width: 100%;
   padding: 10px;
   border: none;
   border-radius: 4px;
   cursor: pointer;
   font-size: 1.15rem;
-  transition: background-color 0.3s ease; 
+  transition: background-color 0.3s ease;
 }
 
 .submit-button:hover {
-  background-color: #FFDD73;
+  background-color: #ffdd73;
 }
 
-.signup-link, .forgot-password {
-    text-align: center;
-    margin-top: 10px;
-    font-size: 1rem;
+.signup-link,
+.forgot-password {
+  text-align: center;
+  margin-top: 10px;
+  font-size: 1rem;
 }
 
-.signup-link a, .forgot-password a {
-    color: #007bff; 
-    text-decoration: none;
+.signup-link a,
+.forgot-password a {
+  color: #007bff;
+  text-decoration: none;
 }
 
-.signup-link a:hover, .forgot-password a:hover {
-    text-decoration: underline;
+.signup-link a:hover,
+.forgot-password a:hover {
+  text-decoration: underline;
 }
-
 
 /* -- END -- Login & Sign up Page styling */
+
+/* -- START -- Posts index & show Page styling */
+
+.posts-index-page,
+.posts-show-page {
+  margin: 32px;
+  background-image: url("/assets/blue_sky_4k.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-attachment: fixed;
+}
+
+.postbox-favicon {
+  width: 60px;
+  height: 60px;
+}
+
+.user-avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 100px;
+}
+
+.user-avatar:hover {
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.navigation-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.form-container {
+  display: flex;
+  justify-content: center;
+}
+
+.post-form {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.post-container {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-content: center;
+}
+
+.post {
+  background-color: var(--white);
+  min-width: 400px;
+  padding: 20px;
+  border-radius: 4px;
+  margin-top: 10px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+  font-size: 1.25rem;
+}
+
+.post-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.post-textbox {
+  font-family: inherit;
+  width: 100%;
+  border: 0;
+  border-bottom: 2px solid var(--white);
+  outline: 0;
+  font-size: 1.3rem;
+  color: var(--white);
+  padding: 7px 0;
+  background: transparent;
+  transition: border-color 0.2s;
+
+  &::placeholder {
+    color: var(--white);
+  }
+}
+
+.post-button {
+  background-color: #ffeeb3;
+  width: 120px;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1.15rem;
+  transition: background-color 0.3s ease;
+}
+
+.post-button:hover {
+  background-color: #ffdd73;
+}
