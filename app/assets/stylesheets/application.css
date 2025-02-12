@@ -219,3 +219,122 @@ body.signup-page {
 .post-button:hover {
   background-color: #ffdd73;
 }
+
+/* show Page styling */
+
+.comment-container {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-content: center;
+}
+
+.post {
+  background-color: var(--white);
+  min-width: 400px;
+  padding: 20px;
+  border-radius: 4px;
+  margin-top: 10px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+  font-size: 1.25rem;
+}
+
+.post-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.post-textbox {
+  font-family: inherit;
+  width: 100%;
+  border: 0;
+  border-bottom: 2px solid var(--white);
+  outline: 0;
+  font-size: 1.3rem;
+  color: var(--white);
+  padding: 7px 0;
+  background: transparent;
+  transition: border-color 0.2s;
+
+  &::placeholder {
+    color: var(--white);
+  }
+}
+
+.post-button {
+  background-color: #ffeeb3;
+  width: 120px;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1.15rem;
+  transition: background-color 0.3s ease;
+}
+
+.post-button:hover {
+  background-color: #ffdd73;
+}
+
+/* show Page styling */
+
+.comment-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.comment {
+  background-color: var(--white);
+  min-width: 320px;
+  padding: 20px;
+  border-radius: 4px;
+  margin-top: 10px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+  font-size: 1.25rem;
+  opacity: 0.9;
+}
+
+.post-show-container {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: center;
+  margin-bottom: 52px;
+}
+
+.post-details {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.post-show h1 {
+  margin-bottom: 5px;
+  font-size: 1.8rem;
+}
+
+.post-show p, .post-show small {
+  font-size: 1.15rem;
+  margin: 0;
+}
+
+.post-show p {
+  font-size: 1rem;
+}
+
+.post-show {
+  background-color: var(--white);
+  min-width: 400px;
+  max-height: 150px;
+  padding: 20px;
+  border-radius: 4px;
+  margin-top: 10px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+  font-size: 1.25rem;
+}
+
+.like-button {
+  background-color: red;
+  color: var(--white);
+}

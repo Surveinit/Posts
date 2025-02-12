@@ -15,7 +15,7 @@
 <div class="form-container">
   <%= form_with model: Post.new, local: true, html: { class: "post-form" } do |form| %>
     <%= form.text_field :content, placeholder: "Write something...", class: "post-textbox" %>
-    <%= form.submit "Create Post", class: "post-button" %>
+    <%= form.submit "Post", class: "post-button" %>
   <% end %>
 </div>
 

@@ -1,32 +1,63 @@
-<h1><%= @post.content %></h1>
-<small>by: <%= link_to @post.user.email, user_path(@post.user) %></small>
-<p>Reactions: <%= @post.reactions.count %></p>
+<div class="navigation-container">
 
-<% if current_user %>
-  <% if current_user.reacted_to?(@post) %>
-    <% reaction = current_user.reactions.find_by(post_id: @post.id) %>  
-    <%= button_to "Unlike", post_reaction_path(@post, reaction), method: :delete if reaction %> 
-  <% else %>
-    <%= button_to "Like", post_reactions_path(@post), method: :post %>
+  <div class="logo">
+    <%= image_tag "post_box_favicon.png", alt: "Postbox favicon", class: "postbox-favicon" %>
+    <h1>Posts#index</h1>
+  </div>
+
+  <%= link_to user_path(current_user) do %>
+    <%= image_tag "user_face.png", alt: "User Avatar", class: "user-avatar" %>
   <% end %>
-<% end %>
 
-<%= form_with model: [@post, Comment.new], local: true do |form| %>
-  <div>
-    <%= form.text_field :content, placeholder: "Write your comment here..." %>
-  </div>
-  <div>
-    <%= form.submit "Create Comment" %>
-  </div>
-<% end %>
+</div>
 
-<ul>
+
+<!-- Post -->
+<div class="post-show-container">
+
+  <div class="post-show">
+
+    <h1><%= @post.content %></h1>
+    <div class="post-details">
+      <small>by: <%= link_to @post.user.email, user_path(@post.user) %></small>
+      <p>Since: <%= current_user.created_at.strftime("%B %d, %Y") %></p> <br>
+    </div>
+
+    <p>Likes: <%= @post.reactions.count %></p>
+
+    <% if current_user %>
+      <% if current_user.reacted_to?(@post) %>
+        <% reaction = current_user.reactions.find_by(post_id: @post.id) %>  
+        <%= button_to "Unlike", post_reaction_path(@post, reaction), method: :delete if reaction %> 
+      <% else %>
+        <%= button_to "Like", post_reactions_path(@post), class: "like-button", method: :post %>
+      <% end %>
+    <% end %>
+  </div>
+
+</div>
+
+<!-- Form to create comment -->
+<div class="form-container">
+  <%= form_with model: [@post, Comment.new], local: true, html: { class: "post-form" } do |form| %>
+    <%= form.text_field :content, placeholder: "Write your comment here...", class: "post-textbox" %>
+    <%= form.submit "Comment", class: "post-button" %>
+  <% end %>
+</div>
+
+
+<!-- List of comments -->
+<div class="comment-container">
+
   <% if @post.comments.any? %>
     <% @post.comments.each do |comment| %>
-      <%= comment.content %> <br>
-      <small>by <%= comment.user.email %></small> <br>
+      <div class="comment">
+        <%= comment.content %> <br>
+        <small>by <%= comment.user.email %></small> <br>
+      </div>
     <% end %>
   <% else %>
     <p>No Comments</p>
   <% end %>
-</ul>
+
+</div>
