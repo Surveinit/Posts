@@ -10,6 +10,10 @@ module ApplicationHelper
     classes << "posts-index-page" if controller_name == "posts" && action_name == "index"
     classes << "posts-show-page" if controller_name == "posts" && action_name == "show"
 
+    # for users:
+    classes << "users-index-page" if controller_name == "users" && action_name == "index"
+    classes << "users-show-page" if controller_name == "users" && action_name == "show"
+
     classes.join(" ")
   end
 end

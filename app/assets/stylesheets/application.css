@@ -338,3 +338,67 @@ body.signup-page {
   background-color: red;
   color: var(--white);
 }
+
+/* -- END -- Post index & show Page styling */
+
+
+/* -- Start -- User show Page styling */
+
+.users-index-page,
+.users-show-page {
+  margin: 32px;
+  background-image: url("/assets/blue_sky_4k.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-attachment: fixed;
+}
+
+.user-show-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.user-show {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.user-show {
+  background-color: var(--white);
+  min-width: 400px;
+  max-height: 150px;
+  padding: 20px;
+  border-radius: 4px;
+  margin-top: 10px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+  font-size: 1.25rem;
+}
+
+.followers, .following {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.followers-count, .following-count {
+  font-size: 1.75rem;
+  margin-bottom: 0;
+}
+
+.followers-label, .following-label {
+  margin: 3;
+}
+
+.follow-button:hover {
+  cursor: pointer;
+}
+
+.heading {
+  display: flex;
+  justify-content: center;
+}
