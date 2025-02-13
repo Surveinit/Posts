@@ -1,23 +1,45 @@
-<h1>Users#index</h1>
+<div class="navigation-container">
 
-<ul>
+  <div class="logo">
+    <%= image_tag "post_box_favicon.png", alt: "Postbox favicon", class: "postbox-favicon" %>
+    <h1>Posts#index</h1>
+  </div>
+
+  <%= link_to user_path(current_user) do %>
+    <%= image_tag "user_face.png", alt: "User Avatar", class: "user-avatar" %>
+  <% end %>
+
+</div>
+
+<div class="higher-div">
+
+<div class="users-container">
+
   <% if @users.any? %>
     <% @users.each do |user| %>
-      <li>
-        <%= link_to user.email, user_path(user) %> <br>
 
-        <% unless current_user == user %>
-          <% if current_user.following?(user) %>
-            <%= button_to "Unfollow", unfollow_user_path(user), method: :delete, params: { user_id: user.id } %>
-          <% else %>
-            <%= button_to "Follow", follow_user_path(user), method: :post, params: { user_id: user.id } %>
+      <div class="user-index-container">
+        <div class="user-index-details">
+          <%= link_to user.email, user_path(user) %> <br>
+          <p>Since: <%= user.created_at.strftime("%B %d, %Y") %></p> <br>
+        </div>
+
+        <div class="follow-index-button">
+          <% unless current_user == user %>
+            <% if current_user.following?(user) %>
+              <%= button_to "Unfollow", unfollow_user_path(user), method: :delete, params: { user_id: user.id } %>
+            <% else %>
+              <%= button_to "Follow", follow_user_path(user), method: :post, params: { user_id: user.id } %>
+            <% end %>
           <% end %>
-        <% end %>
+        </div>
+      </div>
 
-        <p>Since: <%= user.created_at.strftime("%B %d, %Y") %></p> <br>
-      </li>
     <% end %>
   <% else %>
     <p>No Users</p>
   <% end %>
-</ul>
+
+</div>
+
+</div>

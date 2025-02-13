@@ -406,3 +406,32 @@ body.signup-page {
   display: flex;
   justify-content: center;
 }
+
+
+/* -- Start -- User index Page styling */
+
+.higher-div {
+  display: flex;
+  justify-content: center;
+}
+
+.users-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--white);
+  width: 100%;
+  max-width: 500px; /* Limit the width */
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+}
+
+.user-index-container {
+  display: flex;
+  gap: 20px;
+  max-width: 300px;
+}
+
+
