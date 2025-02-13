@@ -5,6 +5,18 @@
   --dark-yellow: #d9cda7;
 }
 
+/* -- START -- Navigation */
+
+.users-link {
+  text-decoration: none;
+  font-size: 1.25rem;
+  color: var(--white);
+}
+
+h1 {
+  color: var(--white);
+}
+
 /* -- START -- Login & Sign up Page styling */
 
 body.login-page,

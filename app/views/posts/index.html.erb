@@ -2,8 +2,10 @@
 
   <div class="logo">
     <%= image_tag "post_box_favicon.png", alt: "Postbox favicon", class: "postbox-favicon" %>
-    <h1>Posts#index</h1>
+    <h1>Posts</h1>
   </div>
+
+  <%= link_to 'Users', users_path(), class: "users-link" %>
 
   <%= link_to user_path(current_user) do %>
     <%= image_tag "user_face.png", alt: "User Avatar", class: "user-avatar" %>
