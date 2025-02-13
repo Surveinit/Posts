@@ -339,6 +339,10 @@ body.signup-page {
   color: var(--white);
 }
 
+.like-button:hover {
+  cursor: pointer;
+}
+
 /* -- END -- Post index & show Page styling */
 
 

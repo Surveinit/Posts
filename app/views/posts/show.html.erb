@@ -40,7 +40,7 @@
 <!-- Form to create comment -->
 <div class="form-container">
   <%= form_with model: [@post, Comment.new], local: true, html: { class: "post-form" } do |form| %>
-    <%= form.text_field :content, placeholder: "Write your comment here...", class: "post-textbox" %>
+    <%= form.text_field :content, placeholder: "Comment something...", class: "post-textbox" %>
     <%= form.submit "Comment", class: "post-button" %>
   <% end %>
 </div>
