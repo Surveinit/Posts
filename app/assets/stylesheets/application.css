@@ -20,6 +20,13 @@
 
 .logo > h1 {
   color: var(--white);
+
+  transition: transform 250ms ease;
+
+  &:hover {
+    cursor: pointer;
+    transform: scale(1.01);
+  }
 }
 
 /* -- START -- Login & Sign up Page styling */
@@ -155,14 +162,12 @@ body.signup-page {
   width: 60px;
   height: 60px;
   border-radius: 100px;
+  transition: transform 250ms ease;
 
   &:hover {
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
     transform: scale(1.03);
   }
-}
-
-.user-avatar:hover {
 }
 
 .navigation-container {
@@ -202,6 +207,12 @@ body.signup-page {
   margin-top: 10px;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
   font-size: 1.25rem;
+  transition: transform 250ms ease;
+
+  &:hover {
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    transform: scale(1.03);
+  }
 }
 
 .post-link {
@@ -313,6 +324,12 @@ body.signup-page {
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
   font-size: 1.25rem;
   opacity: 0.9;
+  transition: transform 250ms ease;
+
+  &:hover {
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    transform: scale(1.03);
+  }
 }
 
 .post-show-container {
