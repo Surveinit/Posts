@@ -1,35 +1,37 @@
-<div class="login-container">  
-  <div class="welcome-form">
-    <h2 class="login-heading">Welcome!</h2> 
+<main>
+  <div class="login-container">  
+    <div class="welcome-form">
+      <h2 class="login-heading">Welcome!</h2> 
 
-    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-      <%= render "devise/shared/error_messages", resource: resource %>
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+        <%= render "devise/shared/error_messages", resource: resource %>
 
-      <div class="field">
-        <%= f.label :email, class: "email-label" %><br /> 
-        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "email-textbox" %>
+        <div class="field">
+          <%= f.label :email, class: "email-label" %><br /> 
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "email-textbox" %>
+        </div>
+
+        <div class="field">
+          <%= f.label :password, class: "password-label" %><br /> 
+          <% if @minimum_password_length %>
+            <em>(<%= @minimum_password_length %> characters minimum)</em>
+          <% end %><br />
+          <%= f.password_field :password, autocomplete: "current-password", class: "password-textbox" %>
+        </div>
+
+        <div class="field">
+          <%= f.label :password_confirmation, class: "password-label" %><br />
+          <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "password-textbox"  %>
+        </div>
+
+        <%= f.submit "Sign in", class: "submit-button" %>
+      <% end %>
+
+      <div class="signup-link"> 
+        <%= render "devise/shared/links" %>
       </div>
 
-      <div class="field">
-        <%= f.label :password, class: "password-label" %><br /> 
-        <% if @minimum_password_length %>
-          <em>(<%= @minimum_password_length %> characters minimum)</em>
-        <% end %><br />
-        <%= f.password_field :password, autocomplete: "current-password", class: "password-textbox" %>
-      </div>
-
-      <div class="field">
-        <%= f.label :password_confirmation, class: "password-label" %><br />
-        <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "password-textbox"  %>
-      </div>
-
-      <%= f.submit "Sign in", class: "submit-button" %>
-    <% end %>
-
-    <div class="signup-link"> 
-      <%= render "devise/shared/links" %>
     </div>
-
+    <%= image_tag "post_box_signin.png", alt: "Post box image", class: "login-image" %>
   </div>
-  <%= image_tag "post_box_signin.png", alt: "Post box image", class: "login-image" %>
-</div>
+</main>

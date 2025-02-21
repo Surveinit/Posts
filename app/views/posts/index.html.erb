@@ -1,41 +1,45 @@
-<div class="navigation-container">
+<nav>
+  <div class="navigation-container">
 
-  <div class="logo">
-    <%= image_tag "post_box_favicon.png", alt: "Postbox favicon", class: "postbox-favicon" %>
-    <h1>Posts</h1>
+    <div class="logo">
+      <%= image_tag "post_box_favicon.png", alt: "Postbox favicon", class: "postbox-favicon" %>
+      <h1>Posts</h1>
+    </div>
+
+    <%= link_to 'Users', users_path(), class: "users-link" %>
+
+    <%= link_to user_path(current_user) do %>
+      <%= image_tag "user_face.png", alt: "User Avatar", class: "user-avatar" %>
+    <% end %>
+
+  </div>
+</nav>
+
+<main>
+  <!-- Form to create a new post -->
+  <div class="form-container">
+    <%= form_with model: Post.new, local: true, html: { class: "post-form" } do |form| %>
+      <%= form.text_field :content, placeholder: "Write something...", class: "post-textbox" %>
+      <%= form.submit "Post", class: "post-button" %>
+    <% end %>
   </div>
 
-  <%= link_to 'Users', users_path(), class: "users-link" %>
+  <!-- List of posts -->
+  <div class="post-container">
 
-  <%= link_to user_path(current_user) do %>
-    <%= image_tag "user_face.png", alt: "User Avatar", class: "user-avatar" %>
-  <% end %>
+    <% if @posts.any? %>
+      <% @posts.each do |post| %>
 
-</div>
+        <%= link_to post_path(post), class: "post-link" do %>
+          <div class="post">
+            <%= post.content %> by: <%= post.user.email || "Unknown User" %>
+          </div>
+        <% end %>
 
-<!-- Form to create a new post -->
-<div class="form-container">
-  <%= form_with model: Post.new, local: true, html: { class: "post-form" } do |form| %>
-    <%= form.text_field :content, placeholder: "Write something...", class: "post-textbox" %>
-    <%= form.submit "Post", class: "post-button" %>
-  <% end %>
-</div>
-
-<!-- List of posts -->
-<div class="post-container">
-
-  <% if @posts.any? %>
-    <% @posts.each do |post| %>
-
-      <%= link_to post_path(post), class: "post-link" do %>
-        <div class="post">
-          <%= post.content %> by: <%= post.user.email || "Unknown User" %>
-        </div>
       <% end %>
-
+    <% else %>
+      <p>No Posts</p>
     <% end %>
-  <% else %>
-    <p>No Posts</p>
-  <% end %>
 
-</div>
+  </div>
+</main>

@@ -1,45 +1,49 @@
-<div class="navigation-container">
+<nav>
+  <div class="navigation-container">
 
-  <div class="logo">
-    <%= image_tag "post_box_favicon.png", alt: "Postbox favicon", class: "postbox-favicon" %>
-    <h1>Posts</h1>
-  </div>
+    <div class="logo">
+      <%= image_tag "post_box_favicon.png", alt: "Postbox favicon", class: "postbox-favicon" %>
+      <h1>Posts</h1>
+    </div>
 
-  <%= link_to user_path(current_user) do %>
-    <%= image_tag "user_face.png", alt: "User Avatar", class: "user-avatar" %>
-  <% end %>
-
-</div>
-
-<div class="higher-div">
-
-<div class="users-container">
-
-  <% if @users.any? %>
-    <% @users.each do |user| %>
-
-      <div class="user-index-container">
-        <div class="user-index-details">
-          <%= link_to user.email, user_path(user) %> <br>
-          <p>Since: <%= user.created_at.strftime("%B %d, %Y") %></p> <br>
-        </div>
-
-        <div class="follow-index-button">
-          <% unless current_user == user %>
-            <% if current_user.following?(user) %>
-              <%= button_to "Unfollow", unfollow_user_path(user), method: :delete, params: { user_id: user.id } %>
-            <% else %>
-              <%= button_to "Follow", follow_user_path(user), method: :post, params: { user_id: user.id } %>
-            <% end %>
-          <% end %>
-        </div>
-      </div>
-
+    <%= link_to user_path(current_user) do %>
+      <%= image_tag "user_face.png", alt: "User Avatar", class: "user-avatar" %>
     <% end %>
-  <% else %>
-    <p>No Users</p>
-  <% end %>
 
-</div>
+  </div>
+</nav>
 
-</div>
+<main>
+  <div class="higher-div">
+
+    <div class="users-container">
+
+      <% if @users.any? %>
+        <% @users.each do |user| %>
+
+          <div class="user-index-container">
+            <div class="user-index-details">
+              <%= link_to user.email, user_path(user) %> <br>
+              <p>Since: <%= user.created_at.strftime("%B %d, %Y") %></p> <br>
+            </div>
+
+            <div class="follow-index-button">
+              <% unless current_user == user %>
+                <% if current_user.following?(user) %>
+                  <%= button_to "Unfollow", unfollow_user_path(user), method: :delete, params: { user_id: user.id } %>
+                <% else %>
+                  <%= button_to "Follow", follow_user_path(user), method: :post, params: { user_id: user.id } %>
+                <% end %>
+              <% end %>
+            </div>
+          </div>
+
+        <% end %>
+      <% else %>
+        <p>No Users</p>
+      <% end %>
+
+    </div>
+
+  </div>
+</main>

@@ -1,68 +1,71 @@
-<div class="navigation-container">
+<nav>
+  <div class="navigation-container">
 
-  <div class="logo">
-    <%= image_tag "post_box_favicon.png", alt: "Postbox favicon", class: "postbox-favicon" %>
-    <h1>Posts</h1>
-  </div>
-
-  <%= link_to 'Users', users_path(), class: "users-link" %>
-
-  <%= link_to user_path(current_user) do %>
-    <%= image_tag "user_face.png", alt: "User Avatar", class: "user-avatar" %>
-  <% end %>
-
-</div>
-
-
-<div class="user-show-container">
-
-  <div class="user-show">
-
-    <div class="user-details">
-      <h1><%= @user.email %> </h1>
-      <p>Since: <%= @user.created_at.strftime("%B %d, %Y") %></p> <br>
+    <div class="logo">
+      <%= image_tag "post_box_favicon.png", alt: "Postbox favicon", class: "postbox-favicon" %>
+      <h1>Posts</h1>
     </div>
 
-    <div class="followers">
-      <p class="followers-count"><%= @user.followers.count %></p>      
-      <p class="followers-label">Followers</p>      
-    </div>
+    <%= link_to 'Users', users_path(), class: "users-link" %>
 
-    <div class="following">
-      <p class="following-count"><%= @user.following.count %></p>      
-      <p class="following-label">Following</p>      
-    </div>
-
-
-  <% unless current_user == @user %>  <%# This is the key change %>
-    <% if current_user.following?(@user) %>
-      <%= button_to "Unfollow", unfollow_user_path(@user), method: :delete, params: { user_id: @user.id }, class: 'follow-button' %>
-    <% else %>
-      <%= button_to "Follow", follow_user_path(@user), method: :post, params: { user_id: @user.id } %>
+    <%= link_to user_path(current_user) do %>
+      <%= image_tag "user_face.png", alt: "User Avatar", class: "user-avatar" %>
     <% end %>
-  <% end %>
+
   </div>
+</nav>
+
+<main>
+  <div class="user-show-container">
+
+    <div class="user-show">
+
+      <div class="user-details">
+        <h1><%= @user.email %> </h1>
+        <p>Since: <%= @user.created_at.strftime("%B %d, %Y") %></p> <br>
+      </div>
+
+      <div class="followers">
+        <p class="followers-count"><%= @user.followers.count %></p>      
+        <p class="followers-label">Followers</p>      
+      </div>
+
+      <div class="following">
+        <p class="following-count"><%= @user.following.count %></p>      
+        <p class="following-label">Following</p>      
+      </div>
 
 
-</div>
-
-<!-- List of comments -->
-
-<div class="heading">
-  <h2>~ Your Posts ~</h2>
-</div>
-
-<div class="comment-container">
-  <% if @user.posts.any? %>
-    <% @user.posts.each do |post| %>
-      <%= link_to post_path(post), class: "post-link" do %> <br>
-        <div class="comment">
-          <%= post.content %> <br>
-        </div>
+      <% unless current_user == @user %>  <%# This is the key change %>
+        <% if current_user.following?(@user) %>
+          <%= button_to "Unfollow", unfollow_user_path(@user), method: :delete, params: { user_id: @user.id }, class: 'follow-button' %>
+        <% else %>
+          <%= button_to "Follow", follow_user_path(@user), method: :post, params: { user_id: @user.id } %>
+        <% end %>
       <% end %>
+    </div>
 
+
+  </div>
+
+  <!-- List of comments -->
+
+  <div class="heading">
+    <h2>~ Your Posts ~</h2>
+  </div>
+
+  <div class="comment-container">
+    <% if @user.posts.any? %>
+      <% @user.posts.each do |post| %>
+        <%= link_to post_path(post), class: "post-link" do %> <br>
+          <div class="comment">
+            <%= post.content %> <br>
+          </div>
+        <% end %>
+
+      <% end %>
+    <% else %>
+      <p>No Posts</p>
     <% end %>
-  <% else %>
-    <p>No Posts</p>
-  <% end %>
-</div>
+  </div>
+</main>
