@@ -1,6 +1,6 @@
 # 📮 Posts : A Text based social Media app. 
 
-## Where you can post, like & follow!
+## Where you can post, comment, like & follow!
 
 ### Demo's 
 ![Video Demo](./app/assets/images/readme/video_demo.gif)
